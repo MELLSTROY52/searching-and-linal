@@ -1,0 +1,26 @@
+
+cmake_minimum_required(VERSION 3.15)
+
+project(search_engine LANGUAGES CXX)
+
+set(CMAKE_CXX_STANDARD 17)
+set(CMAKE_CXX_STANDARD_REQUIRED ON)
+set(CMAKE_CXX_EXTENSIONS OFF)
+
+add_compile_options(-Wall -Wextra)
+
+
+add_subdirectory(external/json)
+
+
+set(OPENXLSX_CREATE_DOCS OFF)
+set(OPENXLSX_BUILD_SAMPLES OFF)
+set(OPENXLSX_BUILD_TESTS OFF)
+set(BUILD_SHARED_LIBS OFF)
+
+add_subdirectory(external/OpenXLSX)
+
+
+add_subdirectory(src)
+add_subdirectory(apps)
+

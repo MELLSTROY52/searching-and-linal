@@ -1,0 +1,21 @@
+
+add_library(search_engine STATIC
+    embedding.cpp
+    parser.cpp
+    spellchecker.cpp
+    tokens.cpp
+)
+
+target_include_directories(search_engine
+    PUBLIC
+        ${PROJECT_SOURCE_DIR}/include
+    PRIVATE
+        ${PROJECT_SOURCE_DIR}/external/rapidcsv/src
+        ${OpenXLSX_INCLUDES}
+)
+
+target_link_libraries(search_engine
+    PUBLIC
+        nlohmann_json::nlohmann_json
+        OpenXLSX::OpenXLSX
+)

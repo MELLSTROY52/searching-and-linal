@@ -1,0 +1,11 @@
+# Hashes of file build rules.
+34a69201257146b9c8abfd16577922e7 CMakeFiles/pugixml_fetch-populate
+e39b09d1c81d4eae540539b3b1bc546e CMakeFiles/pugixml_fetch-populate-complete
+72530e7d1211b0745fd17b8d40e917a6 pugixml_fetch-populate-prefix/src/pugixml_fetch-populate-stamp/pugixml_fetch-populate-build
+00ba283fdcb9a8078c35da17b43c8774 pugixml_fetch-populate-prefix/src/pugixml_fetch-populate-stamp/pugixml_fetch-populate-configure
+966fef2b57f06c7aa6f38bfd796e9ae3 pugixml_fetch-populate-prefix/src/pugixml_fetch-populate-stamp/pugixml_fetch-populate-download
+51b3dd5b972a98c017603d00a7501743 pugixml_fetch-populate-prefix/src/pugixml_fetch-populate-stamp/pugixml_fetch-populate-install
+115c15c143bbd56d8ede25a82bb14220 pugixml_fetch-populate-prefix/src/pugixml_fetch-populate-stamp/pugixml_fetch-populate-mkdir
+e8ac5c1e76077da0f8932ee95b1e3a7a pugixml_fetch-populate-prefix/src/pugixml_fetch-populate-stamp/pugixml_fetch-populate-patch
+1fde31181d80693543d1f8d22d9bf3c5 pugixml_fetch-populate-prefix/src/pugixml_fetch-populate-stamp/pugixml_fetch-populate-test
+9069cc30a726aca2799e44e94b7dfac3 pugixml_fetch-populate-prefix/src/pugixml_fetch-populate-stamp/pugixml_fetch-populate-update
