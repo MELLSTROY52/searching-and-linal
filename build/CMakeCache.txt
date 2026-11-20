@@ -386,6 +386,10 @@ FETCHCONTENT_SOURCE_DIR_MINIZ_FETCH:PATH=
 // for pugixml_fetch
 FETCHCONTENT_SOURCE_DIR_PUGIXML_FETCH:PATH=
 
+//When not empty, overrides where to find pre-populated content
+// for rapidfuzz
+FETCHCONTENT_SOURCE_DIR_RAPIDFUZZ:PATH=
+
 //Enables UPDATE_DISCONNECTED behavior for all content population
 FETCHCONTENT_UPDATES_DISCONNECTED:BOOL=OFF
 
@@ -394,6 +398,9 @@ FETCHCONTENT_UPDATES_DISCONNECTED_MINIZ_FETCH:BOOL=OFF
 
 //Enables UPDATE_DISCONNECTED behavior just for population of pugixml_fetch
 FETCHCONTENT_UPDATES_DISCONNECTED_PUGIXML_FETCH:BOOL=OFF
+
+//Enables UPDATE_DISCONNECTED behavior just for population of rapidfuzz
+FETCHCONTENT_UPDATES_DISCONNECTED_RAPIDFUZZ:BOOL=OFF
 
 FETCH_DEPS_AUTO:BOOL=ON
 
@@ -549,6 +556,22 @@ PUGIXML_NO_XPATH:BOOL=OFF
 //Enable wchar_t mode
 PUGIXML_WCHAR_MODE:BOOL=OFF
 
+//Build benchmarks
+RAPIDFUZZ_BUILD_BENCHMARKS:BOOL=OFF
+
+//Build fuzzers
+RAPIDFUZZ_BUILD_FUZZERS:BOOL=OFF
+
+//Build tests
+RAPIDFUZZ_BUILD_TESTING:BOOL=OFF
+
+//Enable Linters for the test builds
+RAPIDFUZZ_ENABLE_LINTERS:BOOL=OFF
+
+//Install rapidfuzz (Projects embedding rapidfuzz may want to turn
+// this OFF.)
+RAPIDFUZZ_INSTALL:BOOL=OFF
+
 //Name of the computer/site where compile is being run
 SITE:STRING=MacBook-Air-Egor.local
 
@@ -590,6 +613,15 @@ pugixml_IS_TOP_LEVEL:STATIC=OFF
 
 //Value Computed by CMake
 pugixml_SOURCE_DIR:STATIC=/Users/egorasoskov/Desktop/search-engine/build/_deps/pugixml_fetch-src
+
+//Value Computed by CMake
+rapidfuzz_BINARY_DIR:STATIC=/Users/egorasoskov/Desktop/search-engine/build/_deps/rapidfuzz-build
+
+//Value Computed by CMake
+rapidfuzz_IS_TOP_LEVEL:STATIC=OFF
+
+//Value Computed by CMake
+rapidfuzz_SOURCE_DIR:STATIC=/Users/egorasoskov/Desktop/search-engine/build/_deps/rapidfuzz-src
 
 //Value Computed by CMake
 search_engine_BINARY_DIR:STATIC=/Users/egorasoskov/Desktop/search-engine/build
@@ -742,7 +774,7 @@ CMAKE_MODULE_LINKER_FLAGS_RELWITHDEBINFO-ADVANCED:INTERNAL=1
 //ADVANCED property for variable: CMAKE_NM
 CMAKE_NM-ADVANCED:INTERNAL=1
 //number of local generators
-CMAKE_NUMBER_OF_MAKEFILES:INTERNAL=9
+CMAKE_NUMBER_OF_MAKEFILES:INTERNAL=10
 //ADVANCED property for variable: CMAKE_OBJCOPY
 CMAKE_OBJCOPY-ADVANCED:INTERNAL=1
 //ADVANCED property for variable: CMAKE_OBJDUMP

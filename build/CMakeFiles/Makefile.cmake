@@ -17,6 +17,7 @@ set(CMAKE_MAKEFILE_DEPENDS
   "_deps/pugixml_fetch-src/CMakeLists.txt"
   "_deps/pugixml_fetch-src/scripts/pugixml-config.cmake.in"
   "_deps/pugixml_fetch-src/scripts/pugixml.pc.in"
+  "_deps/rapidfuzz-src/CMakeLists.txt"
   "output/OpenXLSX.pc.in.in"
   "output/libopenxlsxCPackOptions.cmake"
   "output/miniz.pc.in.in"
@@ -111,6 +112,7 @@ set(CMAKE_MAKEFILE_OUTPUTS
 
 # Byproducts of CMake generate step:
 set(CMAKE_MAKEFILE_PRODUCTS
+  "_deps/rapidfuzz-subbuild/CMakeLists.txt"
   "CMakeFiles/CMakeDirectoryInformation.cmake"
   "external/json/nlohmann_json.pc"
   "external/json/nlohmann_jsonConfigVersion.cmake"
@@ -145,6 +147,7 @@ set(CMAKE_MAKEFILE_PRODUCTS
   "external/OpenXLSX/Examples/CMakeFiles/CMakeDirectoryInformation.cmake"
   "src/CMakeFiles/CMakeDirectoryInformation.cmake"
   "apps/CMakeFiles/CMakeDirectoryInformation.cmake"
+  "_deps/rapidfuzz-build/CMakeFiles/CMakeDirectoryInformation.cmake"
   )
 
 # Dependency information for all targets:

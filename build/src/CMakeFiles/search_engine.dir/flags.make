@@ -4,7 +4,7 @@
 # compile CXX with /usr/bin/c++
 CXX_DEFINES = -DOPENXLSX_STATIC_DEFINE
 
-CXX_INCLUDES = -I/Users/egorasoskov/Desktop/search-engine/include -I/Users/egorasoskov/Desktop/search-engine/external/rapidcsv/src -I/Users/egorasoskov/Desktop/search-engine/external/json/include -I/Users/egorasoskov/Desktop/search-engine/external/OpenXLSX/OpenXLSX -I/Users/egorasoskov/Desktop/search-engine/external/OpenXLSX/OpenXLSX/headers -I/Users/egorasoskov/Desktop/search-engine/build/external/OpenXLSX/OpenXLSX
+CXX_INCLUDES = -I/Users/egorasoskov/Desktop/search-engine/include -I/Users/egorasoskov/Desktop/search-engine/external/rapidcsv/src -I/Users/egorasoskov/Desktop/search-engine/src/rapidfuzz::rapidfuzz -I/Users/egorasoskov/Desktop/search-engine/external/json/include -I/Users/egorasoskov/Desktop/search-engine/external/OpenXLSX/OpenXLSX -I/Users/egorasoskov/Desktop/search-engine/external/OpenXLSX/OpenXLSX/headers -I/Users/egorasoskov/Desktop/search-engine/build/external/OpenXLSX/OpenXLSX
 
 CXX_FLAGSarm64 = -O3 -DNDEBUG -std=c++17 -arch arm64 -Wall -Wextra
 

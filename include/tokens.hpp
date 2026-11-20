@@ -8,16 +8,40 @@
 #include <rapidcsv.h>
 #include <sstream>
 
+#include <algorithm>
+
 #include <parser.hpp>
+
+class DocumentTokenize {
+private:
+    std::vector<std::string> tokens_title;
+    std::vector<std::string> tokens_content;
+
+    void normalize_DocumentTokenize();
+    void remove_other_signs_DocumentTokenize();
+    void remove_stop_words_DocumentTokenize();
+
+public:
+
+    DocumentTokenize(
+        std::vector<std::string> doc_title_,
+        std::vector<std::string> doc_content_
+    );
+    static DocumentTokenize tokenizeDoc(const Document &doc);
+
+    void process();
+
+    const std::vector<std::string>& get_tokensTitle() const  { return tokens_title;}
+    const std::vector<std::string>& get_tokensContent() const  {return tokens_content;}
+
+};
 
 class Tokenizator {
     private:
     std::vector<Document> docs;
-
-    std::vector<std::string> tokenize();
-    std::vector<std::string> normalize();
-    std::vector<std::string> remove_small_words();
     public:
     Tokenizator( std::vector<Document> data_for_tokens) : docs(std::move(data_for_tokens)) {}
-    std::vector<std::string> steps();
+
+    std::vector<DocumentTokenize> tokenize();
+    
 };

@@ -68,6 +68,7 @@ all: external/json/all
 all: external/OpenXLSX/all
 all: src/all
 all: apps/all
+all: _deps/rapidfuzz-build/all
 .PHONY : all
 
 # The main recursive "codegen" target.
@@ -76,6 +77,7 @@ codegen: external/json/codegen
 codegen: external/OpenXLSX/codegen
 codegen: src/codegen
 codegen: apps/codegen
+codegen: _deps/rapidfuzz-build/codegen
 .PHONY : codegen
 
 # The main recursive "preinstall" target.
@@ -83,6 +85,7 @@ preinstall: external/json/preinstall
 preinstall: external/OpenXLSX/preinstall
 preinstall: src/preinstall
 preinstall: apps/preinstall
+preinstall: _deps/rapidfuzz-build/preinstall
 .PHONY : preinstall
 
 # The main recursive "clean" target.
@@ -91,6 +94,7 @@ clean: external/json/clean
 clean: external/OpenXLSX/clean
 clean: src/clean
 clean: apps/clean
+clean: _deps/rapidfuzz-build/clean
 .PHONY : clean
 
 #=============================================================================
@@ -158,6 +162,25 @@ _deps/pugixml_fetch-build/clean: _deps/pugixml_fetch-build/CMakeFiles/Continuous
 _deps/pugixml_fetch-build/clean: _deps/pugixml_fetch-build/CMakeFiles/ContinuousSubmit.dir/clean
 _deps/pugixml_fetch-build/clean: _deps/pugixml_fetch-build/CMakeFiles/pugixml-static.dir/clean
 .PHONY : _deps/pugixml_fetch-build/clean
+
+#=============================================================================
+# Directory level rules for directory _deps/rapidfuzz-build
+
+# Recursive "all" directory target.
+_deps/rapidfuzz-build/all:
+.PHONY : _deps/rapidfuzz-build/all
+
+# Recursive "codegen" directory target.
+_deps/rapidfuzz-build/codegen:
+.PHONY : _deps/rapidfuzz-build/codegen
+
+# Recursive "preinstall" directory target.
+_deps/rapidfuzz-build/preinstall:
+.PHONY : _deps/rapidfuzz-build/preinstall
+
+# Recursive "clean" directory target.
+_deps/rapidfuzz-build/clean:
+.PHONY : _deps/rapidfuzz-build/clean
 
 #=============================================================================
 # Directory level rules for directory apps
