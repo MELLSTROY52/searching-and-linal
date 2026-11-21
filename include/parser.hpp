@@ -9,7 +9,7 @@
 
 
 using json = nlohmann::json;
-namespace fs = std::filesystem;
+using fs = std::filesystem;
 
 class Document {
 private:

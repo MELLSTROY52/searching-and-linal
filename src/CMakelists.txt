@@ -12,11 +12,12 @@ target_include_directories(search_engine
     PRIVATE
         ${PROJECT_SOURCE_DIR}/external/rapidcsv/src
         ${OpenXLSX_INCLUDES}
-    PRIVATE rapidfuzz::rapidfuzz
 )
 
 target_link_libraries(search_engine
     PUBLIC
         nlohmann_json::nlohmann_json
         OpenXLSX::OpenXLSX
+    PRIVATE
+        rapidfuzz::rapidfuzz
 )
