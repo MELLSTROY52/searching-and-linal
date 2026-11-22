@@ -1,3 +1,0 @@
-/Users/egorasoskov/Desktop/search-engine/build/_deps/pugixml_fetch-subbuild/CMakeFiles/pugixml_fetch-populate.dir
-/Users/egorasoskov/Desktop/search-engine/build/_deps/pugixml_fetch-subbuild/CMakeFiles/edit_cache.dir
-/Users/egorasoskov/Desktop/search-engine/build/_deps/pugixml_fetch-subbuild/CMakeFiles/rebuild_cache.dir

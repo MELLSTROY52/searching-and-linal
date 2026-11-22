@@ -1,2 +1,0 @@
-/usr/bin/ar qc libsearch_engine.a CMakeFiles/search_engine.dir/embedding.cpp.o CMakeFiles/search_engine.dir/parser.cpp.o CMakeFiles/search_engine.dir/spellchecker.cpp.o CMakeFiles/search_engine.dir/tokens.cpp.o
-/usr/bin/ranlib libsearch_engine.a

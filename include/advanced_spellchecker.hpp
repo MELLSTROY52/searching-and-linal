@@ -12,10 +12,11 @@
 
 class Advanced_choice{
     private:
-    Vocabulary vocab;
+    Vocabulary vocabulary;
 
     public:
-    std::vector <std::string> most_suitable_candidates_from_lenven(std::vector<std::string>& query);
-    std::string the_best_choice_from_candidates(std::vector<std::string>& candidates);
+    Advanced_choice(const Vocabulary& vocab) : vocabulary(vocab) {}
+    std::vector <std::vector<std::string>> most_suitable_candidates_from_lenven(std::vector<std::string>& query);
+    std::string the_best_choice_from_candidates(std::vector<std::vector<std::string>>& candidates, Interpolation& inter , NgramLanguageModel& probabl, const std::vector<DocumentTokenize>& docs,const std::vector<std::string>& query);
 
 };

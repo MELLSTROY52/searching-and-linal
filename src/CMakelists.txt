@@ -1,16 +1,19 @@
-
 add_library(search_engine STATIC
     embedding.cpp
     parser.cpp
     spellchecker.cpp
+    advanced_spellchecker.cpp
     tokens.cpp
+    ngram_language_model.cpp
+    interpolated_language.cpp
+    relevance.cpp
 )
 
 target_include_directories(search_engine
     PUBLIC
         ${PROJECT_SOURCE_DIR}/include
-    PRIVATE
         ${PROJECT_SOURCE_DIR}/external/rapidcsv/src
+    PRIVATE
         ${OpenXLSX_INCLUDES}
 )
 
@@ -18,6 +21,5 @@ target_link_libraries(search_engine
     PUBLIC
         nlohmann_json::nlohmann_json
         OpenXLSX::OpenXLSX
-    PRIVATE
         rapidfuzz::rapidfuzz
 )

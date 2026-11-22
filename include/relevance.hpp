@@ -6,9 +6,7 @@
 #include <memory>
 
 class Relevance_Counter{
-    private:
-    std::unordered_map< std::string, std::size_t > count_words;
     public:
-    
-
+    static void most_suit_docs( std::vector<DocumentTokenize>& all_docs , const std::vector<std::string>& query);
+    static void remove_zero_docs(std::vector<DocumentTokenize>& all_docs , const  std::vector<std::string>& query);
 };

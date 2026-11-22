@@ -117,3 +117,9 @@ void Interpolation::train_calculation(NgramLanguageModel& probabl , const std::v
         counts++;
     }
 }
+
+double Interpolation::interpolate(double unigram, double bigram, double trigram) {
+    return lamda_for_unigram * unigram
+         + lamda_for_bigram * bigram
+         + lamda_for_trigram * trigram;
+}

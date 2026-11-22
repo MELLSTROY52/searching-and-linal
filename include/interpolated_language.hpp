@@ -20,9 +20,10 @@ class Interpolation {
     double old_lamda_for_unigram;
     double old_lamda_for_bigram;
     double old_lamda_for_trigram;
-    
+
     public:
     void calculate_responsibilities_lamdas(NgramLanguageModel& probabl , const std::vector<std::string>& query);
     void train_calculation (NgramLanguageModel& probabl , const std::vector<std::string>& query);
+    double interpolate(double unigram, double bigram, double trigram);
 
 };

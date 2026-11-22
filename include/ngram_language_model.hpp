@@ -25,7 +25,7 @@ public:
 
     void train(const std::vector<DocumentTokenize>& docs);
 
-    NgramLanguageModel(const std::unordered_map<std::string , std::size_t>& vocab , std::size_t all_words) : unigram_counts(vocab) {
+    NgramLanguageModel(const std::unordered_map<std::string , std::size_t>& vocab) : unigram_counts(vocab) {
         for ( const auto& [ key, value] : vocab){
             total_words+= value;
         }

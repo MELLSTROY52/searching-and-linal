@@ -10,10 +10,13 @@
 
 DocumentTokenize::DocumentTokenize(
     std::vector<std::string> doc_title_,
-    std::vector<std::string> doc_content_
+    std::vector<std::string> doc_content_,
+    std::unordered_map<std::string, std::size_t> word_counts_
+
 )
     : tokens_title(std::move(doc_title_)),
-      tokens_content(std::move(doc_content_)) {}
+      tokens_content(std::move(doc_content_)), 
+      word_counts(std::move(word_counts_)) {}
 
 
 
@@ -22,6 +25,7 @@ DocumentTokenize DocumentTokenize::tokenizeDoc(const Document &doc) {
 
         std::vector<std::string> tokens_title_;
         std::vector<std::string> tokens_content_;
+        std::unordered_map<std::string, std::size_t> word_counts_;
 
         const std::string& title = doc.getTitle();
         const std::string& content = doc.getContent();
@@ -39,9 +43,18 @@ DocumentTokenize DocumentTokenize::tokenizeDoc(const Document &doc) {
             tokens_content_.push_back(words_for_stream2);
         }
 
+        for ( std::size_t i = 0; i <tokens_title_.size(); i++){
+            word_counts_[tokens_title_[i]]++;
+        } 
+
+        for ( std::size_t i = 0; i <tokens_content_.size(); i++){
+            word_counts_[tokens_content_[i]]++;
+        } 
+
         DocumentTokenize doc_tok(
             std::move(tokens_title_),
-            std::move(tokens_content_)
+            std::move(tokens_content_),
+            std::move(word_counts_)
         );
 
 
