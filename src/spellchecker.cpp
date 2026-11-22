@@ -60,7 +60,7 @@ std::vector<std::string> SpellChecker::check(const std::vector<std::string>& que
 
             std::size_t distance = rapidfuzz::levenshtein_distance(key, corrected_query[i]);
 
-            if (distance > 2) {
+            if (distance > 3) {
                 continue;
             }
 

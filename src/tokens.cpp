@@ -1,4 +1,3 @@
-
 #include <string>
 #include <vector>
 #include <sstream>
@@ -11,12 +10,17 @@
 DocumentTokenize::DocumentTokenize(
     std::vector<std::string> doc_title_,
     std::vector<std::string> doc_content_,
-    std::unordered_map<std::string, std::size_t> word_counts_
+    std::unordered_map<std::string, std::size_t> word_counts_,
+    std::string original_title_,
+    std::string source_file_
 
 )
     : tokens_title(std::move(doc_title_)),
       tokens_content(std::move(doc_content_)), 
-      word_counts(std::move(word_counts_)) {}
+      word_counts(std::move(word_counts_)),
+      original_title(std::move(original_title_)),
+      source_file(std::move(source_file_))
+{}
 
 
 
@@ -54,7 +58,9 @@ DocumentTokenize DocumentTokenize::tokenizeDoc(const Document &doc) {
         DocumentTokenize doc_tok(
             std::move(tokens_title_),
             std::move(tokens_content_),
-            std::move(word_counts_)
+            std::move(word_counts_),
+            doc.getTitle(),
+            doc.get_source_file()
         );
 
 
@@ -108,7 +114,20 @@ void DocumentTokenize::remove_other_signs_DocumentTokenize() {
 void DocumentTokenize::process() {
     normalize_DocumentTokenize();
     remove_other_signs_DocumentTokenize();
+
+    word_counts.clear();
+
+    for (const auto& word : tokens_title) {
+        if (!word.empty())
+            word_counts[word]++;
+    }
+
+    for (const auto& word : tokens_content) {
+        if (!word.empty())
+            word_counts[word]++;
+    }
 }
+
 std::vector<DocumentTokenize> Tokenizator::tokenize(){
     std::vector<DocumentTokenize> final_tokens;
     final_tokens.reserve(docs.size());
@@ -119,4 +138,3 @@ std::vector<DocumentTokenize> Tokenizator::tokenize(){
     }
     return final_tokens;
 }
-

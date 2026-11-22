@@ -48,7 +48,7 @@ void Interpolation::calculate_responsibilities_lamdas(NgramLanguageModel& probab
     if (query.empty()) {
         return;
     }
-
+    std::size_t valid_positions = 0;
     for (std::size_t i = 0; i < query.size(); i++) {
         if (i == 0) {
             responsibility_unigram += 1.0;
@@ -65,6 +65,7 @@ void Interpolation::calculate_responsibilities_lamdas(NgramLanguageModel& probab
             if (denominator > 0.0) {
                 responsibility_unigram += unigram_contribution / denominator;
                 responsibility_bigram += bigram_contribution / denominator;
+                valid_positions++;
             }
         }
         else {
@@ -82,13 +83,16 @@ void Interpolation::calculate_responsibilities_lamdas(NgramLanguageModel& probab
                 responsibility_unigram += unigram_contribution / denominator;
                 responsibility_bigram += bigram_contribution / denominator;
                 responsibility_trigram += trigram_contribution / denominator;
+                valid_positions++;
             }
         }
     }
 
-    lamda_for_unigram = responsibility_unigram / query.size();
-    lamda_for_bigram = responsibility_bigram / query.size();
-    lamda_for_trigram = responsibility_trigram / query.size();
+if (valid_positions > 0) {
+    lamda_for_unigram = responsibility_unigram / valid_positions;
+    lamda_for_bigram = responsibility_bigram / valid_positions;
+    lamda_for_trigram = responsibility_trigram / valid_positions;
+}
 
     responsibility_unigram = 0.0;
     responsibility_bigram = 0.0;

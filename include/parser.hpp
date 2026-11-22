@@ -15,8 +15,16 @@ class Document {
 private:
     std::string title;
     std::string content;
+    std::string source_file;
 
 public:
+    void set_source_file(const std::string& file) {
+    source_file = file;
+}
+
+const std::string& get_source_file() const {
+    return source_file;
+}
     Document(std::string title_, std::string content_)
         : title(std::move(title_)), content(std::move(content_)) {}
 

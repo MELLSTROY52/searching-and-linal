@@ -5,6 +5,9 @@
 #include <filesystem>
 #include <sstream>
 
+#include <iomanip>
+#include <algorithm>
+
 #include "parser.hpp"
 #include "tokens.hpp"
 #include "spellchecker.hpp"
@@ -80,8 +83,10 @@ std::vector<Document> docs;
 
     std::vector<Document> loaded_docs = reader->read(path);
 
-    for (const auto& doc : loaded_docs)
-        docs.push_back(doc);
+    for (auto& doc : loaded_docs) {
+    doc.set_source_file(path.filename().string());
+    docs.push_back(doc);
+}
 }
 Tokenizator tokenizator(docs);
 std::vector<DocumentTokenize> tokenized_docs = tokenizator.tokenize();
@@ -115,6 +120,21 @@ std::string corrected_query =advanced_choice.the_best_choice_from_candidates(
         query
     );
 
+std::cout << "\n========== результаты тренировок ==========\n";
+
+std::cout << std::fixed << std::setprecision(6);
+
+std::cout << "Lambda unigram: "
+          << interpolation.get_lambda_unigram() << '\n';
+
+std::cout << "Lambda bigram:  "
+          << interpolation.get_lambda_bigram() << '\n';
+
+std::cout << "Lambda trigram: "
+          << interpolation.get_lambda_trigram() << '\n';
+
+std::cout << "\n============================================\n";
+
 std::vector<std::string> final_query;
 
 std::istringstream stream(corrected_query);
@@ -133,10 +153,58 @@ if (top_k != 0 && tokenized_docs.size() > top_k) {
         tokenized_docs.end()
     );
 }
-for (const auto& doc : tokenized_docs) {
-    for (const auto& token : doc.get_tokensTitle()) {
-        std::cout << token << " ";
-    }
-    std::cout << '\n';
+std::cout << std::fixed << std::setprecision(2);
+
+if (corrected_query != raw_query) {
+    std::cout << "corrected: " << raw_query
+              << " -> " << corrected_query << "\n\n";
 }
+
+std::size_t result_number = 1;
+
+for (const auto& doc : tokenized_docs) {
+
+    std::size_t matched_tokens = 0;
+    std::size_t total_tokens = doc.get_tokensContent().size();
+
+    std::cout << result_number++ << ". "
+              << doc.get_source_file() << " -\n\n";
+
+    std::cout << "\"" << doc.get_original_title() << "\"\n\n";
+
+    for (std::size_t i = 0; i < final_query.size(); i++) {
+
+        const std::string& token = final_query[i];
+        std::size_t count = 0;
+
+        for (const auto& content_token : doc.get_tokensContent()) {
+            if (content_token == token) {
+                count++;
+            }
+        }
+
+        matched_tokens += count;
+
+        std::cout << token << ": " << count;
+
+        if (i + 1 < final_query.size()) {
+            std::cout << ", ";
+        }
+    }
+
+    double percentage = 0.0;
+
+    if (total_tokens > 0) {
+        percentage =
+            static_cast<double>(matched_tokens) /
+            total_tokens * 100.0;
+    }
+
+    std::cout << "\n\ntotal: "
+              << matched_tokens << " of "
+              << total_tokens << " tokens ("
+              << percentage << "%)\n\n";
+}
+
+return 0;
 }

@@ -26,4 +26,11 @@ class Interpolation {
     void train_calculation (NgramLanguageModel& probabl , const std::vector<std::string>& query);
     double interpolate(double unigram, double bigram, double trigram);
 
+    double get_lambda_unigram() const {return lamda_for_unigram;}
+    
+    double get_lambda_bigram() const {return lamda_for_bigram;}
+    
+    double get_lambda_trigram() const {return lamda_for_trigram;}
+
+    
 };

@@ -50,6 +50,8 @@ std::string Advanced_choice::the_best_choice_from_candidates(std::vector<std::ve
     std::vector<std::string> corrected_words;
 
     probabl.train(docs);
+    
+    inter.train_calculation(probabl, query);
 
     for (std::size_t i = 0; i < candidates.size(); i++) {
 

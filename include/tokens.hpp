@@ -18,16 +18,31 @@ private:
     std::vector<std::string> tokens_content;
     std::unordered_map<std::string, std::size_t> word_counts;
 
+
+    std::string original_title;
+    std::string source_file;
+
     void normalize_DocumentTokenize();
     void remove_other_signs_DocumentTokenize();
     void remove_stop_words_DocumentTokenize();
 
 public:
 
+    const std::string& get_original_title() const {
+    return original_title;
+}
+
+
+    const std::string& get_source_file() const {
+    return source_file;
+}
+
     DocumentTokenize(
         std::vector<std::string> doc_title_,
         std::vector<std::string> doc_content_,
-        std::unordered_map<std::string, std::size_t> word_counts
+        std::unordered_map<std::string, std::size_t> word_counts_,
+        std::string original_title_,
+        std::string source_file_
     );
     static DocumentTokenize tokenizeDoc(const Document &doc);
 
