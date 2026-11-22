@@ -58,7 +58,7 @@ std::vector<std::string> SpellChecker::check(const std::vector<std::string>& que
 
         for (const auto& [key, value] : vocabulary) {
 
-            std::size_t distance = rapidfuzz::levenshtein::distance(key, corrected_query[i]);
+            std::size_t distance = rapidfuzz::levenshtein_distance(key, corrected_query[i]);;
 
             if (distance > 2) {
                 continue;

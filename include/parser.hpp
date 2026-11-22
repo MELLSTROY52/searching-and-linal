@@ -9,7 +9,7 @@
 
 
 using json = nlohmann::json;
-using fs = std::filesystem;
+namespace fs = std::filesystem;
 
 class Document {
 private:
@@ -54,5 +54,3 @@ class Reader_for_XL : public DocumentReader {
 public:
     std::vector<Document> read(const std::filesystem::path& path) const override;
 };
-
- 
