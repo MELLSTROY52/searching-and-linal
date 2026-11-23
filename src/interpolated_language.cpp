@@ -52,6 +52,7 @@ void Interpolation::calculate_responsibilities_lamdas(NgramLanguageModel& probab
     for (std::size_t i = 0; i < query.size(); i++) {
         if (i == 0) {
             responsibility_unigram += 1.0;
+            valid_positions++;
         }
         else if (i == 1) {
             double unigram_probability = probabl.probability_of_unigram(query[i]);
@@ -88,11 +89,19 @@ void Interpolation::calculate_responsibilities_lamdas(NgramLanguageModel& probab
         }
     }
 
-if (valid_positions > 0) {
-    lamda_for_unigram = responsibility_unigram / valid_positions;
-    lamda_for_bigram = responsibility_bigram / valid_positions;
-    lamda_for_trigram = responsibility_trigram / valid_positions;
-}
+    if (valid_positions > 0) {
+    
+        double new_uni = responsibility_unigram / valid_positions;
+        double new_bi = responsibility_bigram / valid_positions;
+        double new_tri = responsibility_trigram / valid_positions;
+        
+        double sum = new_uni + new_bi + new_tri;
+        if (sum > 0) {
+            lamda_for_unigram = new_uni / sum;
+            lamda_for_bigram = new_bi / sum;
+            lamda_for_trigram = new_tri / sum;
+        }
+    }
 
     responsibility_unigram = 0.0;
     responsibility_bigram = 0.0;
