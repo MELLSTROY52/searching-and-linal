@@ -95,8 +95,25 @@ Vocabulary vocabulary;
 vocabulary.build_vocabulary(tokenized_docs);
 
 NgramLanguageModel language_model(vocabulary.get_Vocabulary());
+// обучение моедли каждый 5 документ откалывается для обучения лябмды остальыне используется для получения веротянтсетй
+std::vector<DocumentTokenize> train_docs;
+std::vector<std::string> heldout_tokens;
+for (std::size_t i = 0; i < tokenized_docs.size(); i++) {
+    if (i % 5 == 4) {
+        for (const auto& t : tokenized_docs[i].get_tokensContent()) {
+            heldout_tokens.push_back(t);
+        }
+    } else {
+        train_docs.push_back(tokenized_docs[i]);
+    }
+}
+language_model.train(train_docs);
 
-language_model.train(tokenized_docs);
+
+Interpolation interpolation;
+
+interpolation.train_calculation(language_model, heldout_tokens);
+
 
 Document query_document("", raw_query);
 
@@ -105,8 +122,6 @@ DocumentTokenize tokenized_query = DocumentTokenize::tokenizeDoc(query_document)
 tokenized_query.process();
 
 std::vector<std::string> query = tokenized_query.get_tokensContent();
-
-Interpolation interpolation;
 
 Advanced_choice advanced_choice(vocabulary);
 

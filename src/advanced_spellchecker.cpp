@@ -34,6 +34,11 @@ std::vector <std::vector<std::string>> Advanced_choice::most_suitable_candidates
     for ( std::size_t i = 0; i < query.size(); i++ ){
         std::vector<std::string> words_for_candi;
         words_for_candi.push_back(query[i]);
+        
+        if (vocabulary.contains(query[i])) {
+            candidates.push_back(words_for_candi);
+            continue;
+        }
         for ( const auto&[key , value] : vocabulary.get_Vocabulary()){
                 std::size_t distance = rapidfuzz::levenshtein_distance(key, query[i]);
                 if ( distance <=2 ){
@@ -49,9 +54,8 @@ std::string Advanced_choice::the_best_choice_from_candidates(std::vector<std::ve
     std::string correct_query;
     std::vector<std::string> corrected_words;
 
-    probabl.train(docs);
-    
-    inter.train_calculation(probabl, query);
+    (void)docs;
+
 
     for (std::size_t i = 0; i < candidates.size(); i++) {
 
